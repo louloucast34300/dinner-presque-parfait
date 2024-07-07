@@ -1,0 +1,10 @@
+h1.title{
+    font-family: var(--font-exo);
+    font-weight: 800;
+    font-size:50px;
+}
+.user{
+    font-family: var(--font-exo);
+    font-weight: 800;
+    font-size:25px;
+}

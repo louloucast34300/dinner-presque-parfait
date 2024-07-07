@@ -11,6 +11,11 @@ import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
+import mongoose from "mongoose";
+import { authenticator } from "./auth.server";
+
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 const ABORT_DELAY = 5_000;
 
@@ -138,3 +143,17 @@ function handleBrowserRequest(
     setTimeout(abort, ABORT_DELAY);
   });
 }
+
+
+// connection mongo
+mongoose.connect(process.env.DATA_API_BASE_URL!)
+
+mongoose.connection.on('connected',() => {
+  console.log("Mongo connected")
+})
+mongoose.connection.on('error', (error: any) => {
+  console.log(error);
+});
+
+
+

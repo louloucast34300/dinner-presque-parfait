@@ -1,0 +1,23 @@
+/* Buttons */
+.btn{
+    padding:10px 25px;
+    border-radius:6px;
+    font-family: var(--font-exo);
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight:600;
+    transform:scale(1);
+    transition: transform .2s ease-in-out;
+    max-height:45px;
+}
+.btn:hover{
+    transform:scale(0.95);
+}
+.btn-primary{
+    background-color: var(--primary);
+    color:white;
+}
+.btn-secondary{
+    background-color: var(--secondary);
+    color:white;
+}

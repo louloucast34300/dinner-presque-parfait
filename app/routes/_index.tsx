@@ -1,4 +1,15 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { Form, useLoaderData } from "@remix-run/react";
+import { authenticator } from "~/auth.server";
+import { Link } from "@remix-run/react";
+import LogoutBtn from "~/components/logout";
+
+type User = {
+  _id: string,
+  username: string,
+  password: string,
+  __v: number
+}
 
 export const meta: MetaFunction = () => {
   return [
@@ -6,43 +17,26 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
+export async function loader({ request }: LoaderFunctionArgs) {
+  let user = await authenticator.isAuthenticated(request, {
+    failureRedirect:"/login"
+  });
+  return null;
+};
+
 
 export default function Index() {
+  // const data = useLoaderData<User>();
+  
   return (
-    <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div>
+      <div>
+      </div>
+      {/* {data.username} */}
     </div>
   );
+
 }
+  export async function action({ request }: ActionFunctionArgs) {
+    await authenticator.logout(request, { redirectTo: "/login" });
+  };
