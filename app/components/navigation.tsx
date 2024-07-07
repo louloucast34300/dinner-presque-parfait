@@ -6,6 +6,7 @@ type User = {
   _id: string;
   username: string;
   password: string;
+  identifiant:string;
   __v: number;
 };
 const Navigation = ({ user }: { user: User | null }) => {
@@ -14,11 +15,11 @@ const Navigation = ({ user }: { user: User | null }) => {
       <nav className="flex">
         {user ? (
           <div className="flex justify-between w-full p-4 border-b-2 items-center">
-            <div className="w-[150px]">
+            <Link to="/" className="w-[150px]">
               <img src="/image/logo.webp" alt="" />
-            </div>
+            </Link>
             <div className="flex gap-4 items-center">
-              <div className="user">{user.username}</div>
+              <div className="user">{user.username} <span className="text-base ">id: ({user.identifiant})</span></div>
               <LogoutBtn />
             </div>
           </div>

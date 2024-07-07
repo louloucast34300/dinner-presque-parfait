@@ -5,6 +5,7 @@ import User from "./models/User"
 import bcrypt from "bcryptjs"
 
 type User = {
+    identifiant: any;
     username:string,
     password:string
 }
@@ -25,7 +26,7 @@ const formStrategy = new FormStrategy(async ({form}) =>{
         console.log("invalid password");
         throw new AuthorizationError();
     }
-    console.log(user)
+
     return user;
 });
 

@@ -35,7 +35,6 @@ export async function action({
 }: ActionFunctionArgs) {
     const form = await request.clone().formData()
 
-      
       return await authenticator.authenticate("form", request, {
         successRedirect: "/",
         failureRedirect: "/login"

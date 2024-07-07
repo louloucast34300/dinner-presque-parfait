@@ -1,0 +1,24 @@
+const data = [
+    {
+        username:"louis",
+        identifiant:"louisODIBQ",
+        notes_concurrents:[
+            {
+                username:"Pierre",
+                identifiant:"pierreOCDR",
+                notes:[
+                    {nourriture:1}
+                ]
+            },
+            {
+                username:"Violette",
+                identifiant:"violetteOADG",
+                notes:[
+                    {nourriture:2}
+                ]
+            },
+        ],
+        moyenne:12,
+        total:13
+    }
+]

@@ -3,7 +3,7 @@ import { json, Link, Form } from "@remix-run/react";
 import User from "~/models/User";
 import bcrypt from "bcryptjs"
 import { authenticator } from "~/auth.server";
-
+import { generateIdentifiant } from '~/utils/randomString'
 
 export async function loader({
   request,
@@ -39,8 +39,15 @@ const RegisterRoute = () => {
   
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-  
-    const user = new User({ username, password: hashedPassword });
+    
+    const identifiant = generateIdentifiant(username, 5);
+
+    const user = new User({ 
+      username, 
+      password: hashedPassword, 
+      identifiant 
+    });
+    
     await user.save();
 
     return await authenticator.authenticate("form", request, {

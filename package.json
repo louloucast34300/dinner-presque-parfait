@@ -11,12 +11,16 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.16.0",
     "@remix-run/node": "^2.10.2",
     "@remix-run/react": "^2.10.2",
     "@remix-run/serve": "^2.10.2",
     "@types/node": "^20.14.10",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "isbot": "^4.1.0",
     "mongoose": "^8.4.5",
